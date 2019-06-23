@@ -1,0 +1,5 @@
+## 忽略资源文件上传
+/source
+
+## 忽略vscode配置
+/.vscode
