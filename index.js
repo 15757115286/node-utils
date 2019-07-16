@@ -4,6 +4,7 @@ const fs = require('fs');
 const http = require('http');
 const querystring = require('querystring');
 const { concat } = require('./utils');
+const formidable = require('formidable')
 
 let router = {
     '/getMp4'(req, res, data, mPath){
@@ -17,6 +18,14 @@ let router = {
                 requestError(res, mPath);
             })
             readStream.pipe(res);
+    },
+    '/savePic'(req, res, data, mPath){
+        /* fs.writeFile('test.png', data, err => res.end(err || 'save ok')); */
+        var form = new formidable.IncomingForm();
+ 
+        form.parse(req, function(err, fields, files) {
+            res.end('ok');
+        });
     }
 }
 
@@ -48,7 +57,7 @@ server.on('error',(e)=>{
 server.on('close',()=>{
     console.log('server closed');
 })
-server.listen(8080);
+server.listen(3000);
 
 function next({ req, res, path }, data){
     /* console.log(Buffer.isBuffer(data) ? data.toString('utf8') : data);

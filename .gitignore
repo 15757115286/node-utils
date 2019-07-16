@@ -3,3 +3,9 @@
 
 ## 忽略vscode配置
 /.vscode
+
+## 忽略资源文件夹
+/imgs
+
+## 忽略node_modules
+/node_modules
